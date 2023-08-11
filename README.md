@@ -1,38 +1,44 @@
-# create-svelte
+# Noted 📝
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+A simple note-taking app for the purposes of practicing SvelteKit, TypeScript, and Databasing.
 
-## Creating a project
+## Features
+- Note creation, management, and deletion
+- Elegant UI for seamless note-taking
+- Built with SvelteKit and TypeScript for front-end, and powered by Prisma & SupaBase for backend operations
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Installation
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Follow these steps to set up the project:
 
 ```bash
-npm run dev
+# Clone the repository
+git clone https://github.com/tomagrab/noted.git
 
-# or start the server and open the app in a new browser tab
+# Navigate to the project directory
+cd noted
+
+# Install the dependencies
+npm install
+
+# Start the development server
 npm run dev -- --open
 ```
 
-## Building
+## Usage
 
-To create a production version of your app:
+To build the project for production:
 
-```bash
+```
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+## Contribution
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Want to contribute? Great! 🎉
+
+Simply fork the project and create a pull request. We appreciate any kind of contribution, whether it's fixing bugs, improving documentation, or suggesting new features.
+
+## License
+
+This project is licensed under the MIT License
