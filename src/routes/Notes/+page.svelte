@@ -1,48 +1,26 @@
 <script lang="ts">
-  import type { PageData } from "./$types";
+  import { enhance } from "$app/forms";
+  import type { ActionData, PageData } from "./$types";
 
   export let data: PageData;
+  export let form: ActionData;
 </script>
 
 <h1 class="text-4xl mb-4">take note</h1>
 
-<div class="notepad flex-grow overflow-y-auto">
-  <form class="form">
-    <div class="form-control">
-      <label class="label">
-        <span class="label-text">title</span>
-      </label>
-      <input type="text" placeholder="title" class="input input-bordered" />
-    </div>
-    <div class="form-control">
-      <label class="label">
-        <span class="label-text">content</span>
-      </label>
-      <textarea placeholder="content" class="textarea textarea-bordered" />
-    </div>
-    <div class="form-control">
-      <label class="label">
-        <span class="label-text">tags</span>
-      </label>
-      <input type="text" placeholder="tags" class="input input-bordered" />
-    </div>
-    <div class="form-control">
-      <label class="label">
-        <span class="label-text">date</span>
-      </label>
-      <input type="date" placeholder="date" class="input input-bordered" />
-    </div>
-    <div class="form-control">
-      <label class="label">
-        <span class="label-text">time</span>
-      </label>
-      <input type="time" placeholder="time" class="input input-bordered" />
-    </div>
-    <div class="form-control">
-      <button class="btn">note</button>
-    </div>
-  </form>
-</div>
+<form method="POST" action="?/createNote" use:enhance>
+  <div class="flex flex-col">
+    <label for="title">title</label>
+    <input type="text" name="title" id="title" />
+  </div>
+
+  <div class="flex flex-col">
+    <label for="content">content</label>
+    <textarea name="content" id="content" class="notepad" />
+  </div>
+
+  <button type="submit">save</button>
+</form>
 
 <style lang="scss">
   .notepad {

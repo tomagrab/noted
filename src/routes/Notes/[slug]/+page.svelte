@@ -3,3 +3,7 @@
 
   export let data: PageData;
 </script>
+
+<h1>
+  {data.note?.title}
+</h1>
