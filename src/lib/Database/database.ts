@@ -24,10 +24,13 @@ export const createNote = async (data: any) => {
 }
 
 // update note
-export const updateNote = async (id: number, data: any) => {
+export const updateNote = async (id: number, title: string, content: string) => {
     return await db.note.update({
         where: { id: id },
-        data: data,
+        data: {
+            title: title,
+            content: content,
+        },
     });
 }
 

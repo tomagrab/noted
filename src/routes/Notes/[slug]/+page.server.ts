@@ -1,13 +1,25 @@
-import { clearNotes, createNote, deleteNote, getNotes, updateNote } from "$lib/Database/database";
-import { fail, type Actions } from "@sveltejs/kit";
+import db, { deleteNote, updateNote } from '$lib/Database/database';
+import { fail, type Actions } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 
+export const load: PageServerLoad = async ({params}) => {
+    const note = db.note.findUnique({
+        where: { id: Number(params.slug) },
+    });
+
+    return { note };
+}
 
 export const actions: Actions = {
-    createNote: async ({ request }) => {
+    updateNote: async ({ request }) => {
         const formData = await request.formData();
+        const id = Number(formData.get("id"));
         const title = String(formData.get("title"));
         const content = String(formData.get("content"));
-        const published: Boolean = true;
+
+        if (!id) {
+            return fail(400, {id, missing: true});
+        }
 
         if (!title) {
             return fail(400, {title, missing: true});
@@ -17,7 +29,8 @@ export const actions: Actions = {
             return fail(400, {content, missing: true});
         }
 
-        createNote({title, content, published});
+
+        updateNote(id, title, content);
 
         return { success: true };
     },
@@ -34,11 +47,4 @@ export const actions: Actions = {
 
         return { success: true };
     },
-
-
-    clearNotes: async () => {
-        clearNotes();
-
-        return { success: true };
-    }
 }
